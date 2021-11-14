@@ -1,5 +1,9 @@
+import org.jetbrains.kotlin.cli.jvm.compiler.findMainClass
+
 plugins {
     kotlin("jvm") version "1.5.31"
+    idea
+    application
 }
 
 group "org.example"
@@ -18,4 +22,20 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+tasks.compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
+application {
+    mainClass.set("PerformanceBillingSystemKt")
 }
